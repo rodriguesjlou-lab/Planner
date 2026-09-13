@@ -101,9 +101,10 @@
 </div>
 <div id="root"></div>
 
-<!-- Babel Standalone: transpila o JSX de app.jsx diretamente no navegador -->
-<script src="https://unpkg.com/@babel/standalone@7.25.6/babel.min.js"></script>
-<script type="text/babel" data-type="module" data-presets="react" src="app.jsx"></script>
+<!-- app.js já vem pré-compilado (JSX convertido para JavaScript comum),
+     então o navegador só precisa carregar e executar, sem gastar tempo
+     traduzindo o código na hora (mais rápido e mais confiável) -->
+<script type="module" src="app.js"></script>
 
 <script>
   // Registra o service worker (necessário para instalação e funcionamento offline)
