@@ -6,7 +6,7 @@
      offline depois do primeiro carregamento
 ========================================================= */
 
-const VERSAO_CACHE = "meu-planner-cache-v1";
+const VERSAO_CACHE = "meu-planner-cache-v2";
 
 const ARQUIVOS_APP_SHELL = [
   "./",
