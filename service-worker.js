@@ -6,12 +6,12 @@
      offline depois do primeiro carregamento
 ========================================================= */
 
-const VERSAO_CACHE = "meu-planner-cache-v2";
+const VERSAO_CACHE = "meu-planner-cache-v3";
 
 const ARQUIVOS_APP_SHELL = [
   "./",
   "./index.html",
-  "./app.jsx",
+  "./app.js",
   "./manifest.json",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
