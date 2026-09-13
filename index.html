@@ -59,10 +59,23 @@
     color: #5B4B57;
     font-size: 13px;
     margin: 0;
+    text-align: center;
+    padding: 0 32px;
   }
   @keyframes pulsar {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.15); opacity: 0.7; }
+  }
+  #carregando button {
+    margin-top: 6px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: none;
+    background: #F3C6D3;
+    color: #5B4B57;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
   }
 </style>
 
@@ -113,10 +126,25 @@
   });
   observador.observe(document.getElementById("root"), { childList: true, subtree: true });
 
-  // Segurança: some com a tela de carregamento no máximo após alguns segundos
+  // Segurança: se o app não montar em alguns segundos (ex.: internet
+  // instável ao baixar React/Babel), mostra um aviso com botão de
+  // tentar de novo, em vez de simplesmente sumir e deixar tela branca.
   setTimeout(() => {
+    const raiz = document.getElementById("root");
     const tela = document.getElementById("carregando");
-    if (tela) tela.style.display = "none";
+    const jaMontou = raiz && raiz.childElementCount > 0;
+    if (tela && !jaMontou) {
+      tela.innerHTML = `
+        <div class="flor">🌸</div>
+        <p>
+          Não foi possível carregar o app agora.<br/>
+          Verifique sua conexão com a internet e tente de novo.
+        </p>
+        <button onclick="window.location.reload()">Tentar novamente</button>
+      `;
+    } else if (tela && jaMontou) {
+      tela.style.display = "none";
+    }
   }, 8000);
 </script>
 </body>
